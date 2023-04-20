@@ -31,6 +31,12 @@ public class App
             System.out.println("Cookie file not found!");
             System.exit(0);
         }
+        
+        // testing the Cookie class
+        Cookie cookie = new Cookie();
+        cookie.readCookieFile(fileName);
+        String myCookie = cookie.getRandomCookie();
+        System.out.println(myCookie);
 
         // establish server connection
 
@@ -55,9 +61,11 @@ public class App
                     msgReceived = dis.readUTF();
 
                     if (msgReceived.equals("get-cookie")) {
-                        // instantiate Cookie.java
                         // get a random cookie
+                        String randomCookie = cookie.getRandomCookie();
                         // send the random cookie out using DataOutputStream (dos.writeUTF(xxxxx))
+                        dos.writeUTF(randomCookie);
+                        dos.flush();
                     }
 
 

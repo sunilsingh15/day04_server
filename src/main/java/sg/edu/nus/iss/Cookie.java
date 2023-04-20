@@ -2,11 +2,11 @@ package sg.edu.nus.iss;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cookie {
     List<String> cookies = null;
@@ -37,7 +37,17 @@ public class Cookie {
     }
 
     public String getRandomCookie() {
+        // use Math random function to get random item from cookies collection
+        Random random = new Random();
 
-        return "";
+        // check if cookies are loaded
+        // if cookies collection loaded, then generate and return random cookie
+        if (cookies == null) {
+            return "There is no cookie.";
+        } else {
+            String randomCookie = cookies.get(random.nextInt(cookies.size()));
+            return randomCookie;
+        }
+
     }
 }
